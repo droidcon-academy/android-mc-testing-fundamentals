@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BookHaven</string>
+    <string name="add_book">Add a new book</string>
+    <string name="loading">Loading Indicator</string>
+    <string name="title">Title:</string>
+    <string name="title_hint">Book Title…</string>
+    <string name="author">Author:</string>
+    <string name="author_hint">Author\'s Name</string>
+    <string name="date">Published:</string>
+    <string name="date_hint">Date published…</string>
+    <string name="notes_hint">I learned…</string>
+    <string name="sort_by">Sort by: </string>
+    <string name="sort_by_date">Date</string>
+    <string name="sort_by_title">Title</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="search_books">Search Books by Title or Author</string>
+    <string name="invalid_book_prompt">A book should have a Title, an Author</string>
+    <string name="error_text">Oops, something went wrong…</string>
+    <string name="empty_text">Its lonely here, add a book…</string>
+    <string name="empty_search_text">No book matches your search…</string>
+</resources>
