@@ -84,8 +84,7 @@ class BookListContentTest {
         // Assert
         composeTestRule.onNodeWithText("Book 1").assertExists()
         composeTestRule.onNodeWithText("Book 2").assertExists()
-        composeTestRule.onNodeWithText(context.getString(R.string.sort_by)).assertExists()
-        composeTestRule.onNodeWithText(context.getString(R.string.app_name)).assertExists()
+        composeTestRule.onNodeWithContentDescription(context.getString(R.string.sort_by)).assertExists()
         composeTestRule
             .onNodeWithContentDescription(context.getString(R.string.add_book))
             .assertExists()
@@ -185,6 +184,15 @@ class BookListContentTest {
             .onAllNodesWithContentDescription(context.getString(R.string.delete))
             .onFirst()
             .performClick()
+
+        composeTestRule.onNodeWithText(context.getString(R.string.delete_confirmation)).assertExists()
+        composeTestRule.onNodeWithText(context.getString(R.string.confirm)).assertExists()
+        composeTestRule.onNodeWithText(context.getString(R.string.cancel)).assertExists()
+
+        composeTestRule
+            .onNodeWithText(context.getString(R.string.confirm))
+            .performClick()
+
         assertTrue(isDeleteClicked)
     }
 

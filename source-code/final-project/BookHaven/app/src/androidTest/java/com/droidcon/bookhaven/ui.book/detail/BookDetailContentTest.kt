@@ -109,7 +109,7 @@ class BookDetailContentTest {
 
         // Assert
         composeTestRule
-            .onNodeWithText(context.getString(R.string.delete))
+            .onNodeWithContentDescription(context.getString(R.string.delete))
             .performClick()
         assertTrue(isDeleteClicked)
     }

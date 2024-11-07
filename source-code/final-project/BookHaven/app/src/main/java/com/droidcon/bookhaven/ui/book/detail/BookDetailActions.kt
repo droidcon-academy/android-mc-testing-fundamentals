@@ -18,4 +18,6 @@ sealed interface BookDetailActions {
     data class UpdateBook(
         val book: Book,
     ) : BookDetailActions
+
+    data object Back : BookDetailActions
 }

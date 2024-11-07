@@ -44,6 +44,7 @@ class BookDetailViewmodel
                         is BookDetailActions.DeleteBook -> deleteBook(action.id)
                         is BookDetailActions.SaveBook -> saveBook(action.book)
                         is BookDetailActions.UpdateBook -> saveBook(action.book)
+                        BookDetailActions.Back -> { _effect.emit(BookDetailEffect.NavigateBack) }
                     }
                 }
             }

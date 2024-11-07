@@ -15,8 +15,13 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="search_books">Search Books by Title or Author</string>
-    <string name="invalid_book_prompt">A book should have a Title, an Author</string>
+    <string name="invalid_book_prompt">A book should have a Title, an Author, and a valid published date</string>
     <string name="error_text">Oops, something went wrong…</string>
     <string name="empty_text">Its lonely here, add a book…</string>
     <string name="empty_search_text">No book matches your search…</string>
+    <string name="back">back</string>
+    <string name="select_date">Select date</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_confirmation">Are you sure you want to delete this book? This action cannot be undone.</string>
 </resources>
