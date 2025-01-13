@@ -17,6 +17,7 @@ room_version = "2.6.1"
 ksp = "2.0.20-1.0.24"
 hilt = "2.51.1"
 truth = "1.4.4"
+kover = "0.9.0-RC"
 
 
 [libraries]
@@ -55,6 +56,7 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+jetbrainsKotlinKover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
 
 
