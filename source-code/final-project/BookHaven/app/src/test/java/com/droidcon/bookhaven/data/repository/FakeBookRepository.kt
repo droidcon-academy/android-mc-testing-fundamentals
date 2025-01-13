@@ -21,6 +21,6 @@ class FakeBookRepository : BookRepository {
 
     override fun searchBooks(query: String): Flow<List<Book>> =
         flow {
-            emit(books.filter { it.title.contains(query, true) || it.author.contains(query) })
+            emit(books.filter { it.title.contains(query, true) || it.author.contains(query, true) })
         }
 }

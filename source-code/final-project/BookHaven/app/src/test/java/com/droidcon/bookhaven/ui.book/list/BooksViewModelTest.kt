@@ -91,12 +91,12 @@ class BooksViewModelTest {
                 booksViewModel.state.value.books
                     .first()
                     .id,
-            ).isEqualTo(1) // Sorted by timestamp (NAME)
+            ).isEqualTo(1) // Sorted by title (NAME)
             assertThat(
                 booksViewModel.state.value.books
                     .last()
                     .id,
-            ).isEqualTo(3) // Sorted by timestamp (NAME)
+            ).isEqualTo(3) // Sorted by title (NAME)
         }
 
     @Test
@@ -112,12 +112,17 @@ class BooksViewModelTest {
             books.forEach { fakeBookRepository.insertBook(it) }
 
             // Act
-            booksViewModel.userActions.send(BookListActions.UpdateSearchQuery("c"))
-            booksViewModel.userActions.send(BookListActions.GetBooks)
+            booksViewModel.userActions.send(BookListActions.UpdateSearchQuery("C"))
+            booksViewModel.userActions.send(BookListActions.SearchBooks)
 
             // Assert
             assertThat(booksViewModel.state.value.isLoading).isFalse()
             assertThat(booksViewModel.state.value.books.size).isEqualTo(1)
+            assertThat(
+                booksViewModel.state.value.books
+                    .first()
+                    .title,
+            ).contains("C")
             assertThat(
                 booksViewModel.state.value.books
                     .first()

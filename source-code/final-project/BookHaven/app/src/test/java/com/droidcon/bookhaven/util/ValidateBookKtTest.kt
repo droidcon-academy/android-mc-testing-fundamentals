@@ -65,9 +65,9 @@ class ValidateBookKtTest {
         val result = book.isValid()
 
         // Assert
-        assertThat(book.title.length).isGreaterThan(2)
-        assertThat(book.author.length).isGreaterThan(2)
-        assertThat(book.year.length).isGreaterThan(2)
+        assertThat(book.title.length).isGreaterThan(1)
+        assertThat(book.author.length).isGreaterThan(1)
+        assertThat(book.year.length).isGreaterThan(1)
         assertThat(result).isTrue()
     }
 

@@ -2,8 +2,8 @@ package com.droidcon.bookhaven.data.usecase
 
 import com.droidcon.bookhaven.data.model.Book
 import com.droidcon.bookhaven.data.model.SortType
-import com.google.common.truth.Truth.assertThat
 import com.droidcon.bookhaven.data.repository.FakeBookRepository
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -42,9 +42,10 @@ class GetBooksTest {
             }
 
             // Act
-            val books = getBooks(SortType.DATE_ADDED).first()
+            val books = getBooks().first()
 
             // Assert
+            assertThat(books.size).isEqualTo(5)
             assertThat(books.first().id).isEqualTo(4)
             assertThat(books.last().id).isEqualTo(0)
             assertThat(books.first().timestamp).isGreaterThan(books.last().timestamp)
@@ -71,6 +72,7 @@ class GetBooksTest {
             val books = getBooks(SortType.NAME).first()
 
             // Assert
+            assertThat(books.size).isEqualTo(5)
             assertThat(books.first().title).contains("0")
             assertThat(books.first().author).contains("0")
             assertThat(books.last().title).contains("4")

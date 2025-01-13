@@ -11,6 +11,7 @@ import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
 import com.droidcon.bookhaven.R
 import com.droidcon.bookhaven.data.model.Book
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -145,11 +146,11 @@ class BookListContentTest {
                 },
             )
         }
-
-        // Assert
         composeTestRule
             .onNodeWithContentDescription(context.getString(R.string.add_book))
             .performClick()
+
+        // Assert
         assertTrue(isFabClicked)
     }
 
@@ -164,6 +165,7 @@ class BookListContentTest {
             )
         val fakeState = BookListState(books = fakeBooks, isLoading = false)
         var isDeleteClicked = false
+        var deletedBookId: Int? = null
 
         // Act
         composeTestRule.setContent {
@@ -172,6 +174,7 @@ class BookListContentTest {
                 actions = {
                     if (it is BookListActions.DeleteBook) {
                         isDeleteClicked = true
+                        deletedBookId = it.id
                     }
                 },
             )
@@ -185,7 +188,8 @@ class BookListContentTest {
             .onFirst()
             .performClick()
 
-        composeTestRule.onNodeWithText(context.getString(R.string.delete_confirmation)).assertExists()
+        composeTestRule.onNodeWithText(context.getString(R.string.delete_confirmation))
+            .assertExists()
         composeTestRule.onNodeWithText(context.getString(R.string.confirm)).assertExists()
         composeTestRule.onNodeWithText(context.getString(R.string.cancel)).assertExists()
 
@@ -194,6 +198,7 @@ class BookListContentTest {
             .performClick()
 
         assertTrue(isDeleteClicked)
+        assertEquals(fakeBooks.first().id, deletedBookId)
     }
 
     // Your Turn: Test that OpenBook action is sent when a bookItem is clicked
