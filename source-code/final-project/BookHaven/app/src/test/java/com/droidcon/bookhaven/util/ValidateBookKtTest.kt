@@ -2,22 +2,24 @@ package com.droidcon.bookhaven.util
 
 import com.droidcon.bookhaven.data.model.Book
 import com.google.common.truth.Truth.assertThat
-import org.junit.Assert.assertFalse
+import junit.framework.Assert.assertFalse
+import junit.framework.Assert.assertTrue
+
 import org.junit.Test
 
 class ValidateBookKtTest {
+
     @Test
     fun `isValid returns false when title is less than 2 characters`() {
         // Arrange
-        val book =
-            Book(
-                title = "A", // Invalid title
-                author = "Author",
-                year = "2020",
-                id = 1,
-                timestamp = 0L,
-                notes = "",
-            )
+        val book = Book(
+            title = "A", // Invalid title
+            author = "Author",
+            year = "2020",
+            id = 1,
+            timestamp = 0L,
+            notes = "",
+        )
 
         // Act
         val result = book.isValid()
@@ -26,44 +28,38 @@ class ValidateBookKtTest {
         assertFalse(result)
     }
 
-    // Your Turn, Create a Valid Book and Confirm isValid is True
     @Test
     fun `isValid returns true for a valid book`() {
         // Arrange
-        val book =
-            Book(
-                title = "Valid Title",
-                author = "Valid Author",
-                year = "2020",
-                id = 1,
-                timestamp = 0L,
-                notes = "",
-            )
+        val book = Book(
+            title = "Valid Title",
+            author = "Valid Author",
+            year = "2020",
+            id = 1,
+            timestamp = 0L,
+            notes = "",
+        )
 
         // Act
         val result = book.isValid()
 
         // Assert
-        assertThat(result).isTrue()
+        assertTrue(result)
     }
 
-    // Using Truth Assertions
     @Test
     fun `isValid returns true for a valid book using Truth assertions`() {
         // Arrange
-        val book =
-            Book(
-                title = "Valid Title",
-                author = "Valid Author",
-                year = "2020",
-                id = 1,
-                timestamp = 0L,
-                notes = "",
-            )
-
+        val book = Book(
+            title = "Valid Title",
+            author = "Valid Author",
+            year = "2020",
+            id = 1,
+            timestamp = 0L,
+            notes = "",
+        )
         // Act
         val result = book.isValid()
-
         // Assert
         assertThat(book.title.length).isGreaterThan(1)
         assertThat(book.author.length).isGreaterThan(1)
@@ -72,17 +68,16 @@ class ValidateBookKtTest {
     }
 
     @Test
-    fun `isValid returns false when Author has 1 characters using Truth assertions`() {
+    fun `isValid returns false when Author has 1 character using Truth assertions`() {
         // Arrange
-        val book =
-            Book(
-                title = "Valid Title",
-                author = "V", // Invalid author
-                year = "2020",
-                id = 1,
-                timestamp = 0L,
-                notes = "",
-            )
+        val book = Book(
+            title = "Valid Title",
+            author = "V", // Invalid author
+            year = "2020",
+            id = 1,
+            timestamp = 0L,
+            notes = "",
+        )
 
         // Act
         val result = book.isValid()
@@ -92,21 +87,17 @@ class ValidateBookKtTest {
         assertThat(result).isFalse()
     }
 
-    // Your Turn, Create a Book with a year having two white spaces and Confirm that
-    // isValid is False using Truth assertions
-
     @Test
     fun `isValid returns false when year is two white spaces using Truth assertions`() {
         // Arrange
-        val book =
-            Book(
-                title = "Valid Title",
-                author = "Valid Author",
-                year = "  ", // Invalid year
-                id = 1,
-                timestamp = 0L,
-                notes = "",
-            )
+        val book = Book(
+            title = "Valid Title",
+            author = "Valid Author",
+            year = "  ", // Invalid year
+            id = 1,
+            timestamp = 0L,
+            notes = "",
+        )
 
         // Act
         val result = book.isValid()

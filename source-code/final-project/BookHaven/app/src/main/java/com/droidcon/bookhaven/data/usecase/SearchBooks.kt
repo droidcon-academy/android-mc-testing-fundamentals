@@ -12,22 +12,19 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class SearchBooks
-    @Inject
-    constructor(
-        @IoDispatcher private val dispatcher: CoroutineDispatcher,
-        private val repository: BookRepository,
-    ) {
-        operator fun invoke(
-            query: String,
-            sortType: SortType,
-        ): Flow<List<Book>> =
-            repository
-                .searchBooks(query)
-                .map { books ->
-                    when (sortType) {
-                        NAME -> books.sortedBy { it.title.lowercase() }
-                        DATE_ADDED -> books.sortedByDescending { it.timestamp }
-                    }
-                }.flowOn(dispatcher)
+class SearchBooks @Inject constructor(
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val repository: BookRepository,
+) {
+    operator fun invoke(
+        query: String,
+        sortType: SortType,
+    ): Flow<List<Book>> {
+        return repository.searchBooks(query).map { books ->
+            when (sortType) {
+                NAME -> books.sortedBy { it.title.lowercase() }
+                DATE_ADDED -> books.sortedByDescending { it.timestamp }
+            }
+        }.flowOn(dispatcher)
     }
+}

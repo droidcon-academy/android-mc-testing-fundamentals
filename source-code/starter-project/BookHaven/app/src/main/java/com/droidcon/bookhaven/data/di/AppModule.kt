@@ -27,8 +27,7 @@ annotation class MainDispatcher
 object AppModule {
     @Provides
     @Singleton
-    fun provideBookDatabase(app: Application): BookDatabase =
-        Room
+    fun provideBookDatabase(app: Application): BookDatabase = Room
             .databaseBuilder(app, BookDatabase::class.java, BookDatabase.DATABASE_NAME)
             .build()
 

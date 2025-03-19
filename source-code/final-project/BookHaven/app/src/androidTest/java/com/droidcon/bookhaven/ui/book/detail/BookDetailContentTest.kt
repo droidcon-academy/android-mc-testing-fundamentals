@@ -9,16 +9,9 @@ import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
 import com.droidcon.bookhaven.R
 import com.droidcon.bookhaven.data.model.Book
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
-
-/* Exercise: write tests for the BookDetailContent composable. Here's an outline of how to approach it:
-1. Ad test tag to CircularProgressIndicator in BookDetailContent and Test Loading State
-2. Test Error State
-3. Test Save Action
-4. Test Delete Action
-*/
 
 class BookDetailContentTest {
     @get:Rule
